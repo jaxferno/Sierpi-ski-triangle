@@ -1,0 +1,93 @@
+
+import turtle 
+import random
+from math import sqrt , pow 
+wn = turtle.Screen()
+t=turtle.Turtle()
+
+
+
+def draw(x,y):
+   
+    t.clear() 
+    t.reset() 
+    t.speed(0)
+    t.pensize(1)
+    punct1x = 0
+    punct1y= 201
+    punct2x=-201
+    punct2y=-101
+    punct3x=201
+    punct3y=-101
+
+    t.penup()
+    t.setpos(punct1x,punct1y)
+    t.pendown()
+    t.dot()
+    t.write("1")
+    t.penup()
+    t.setpos(punct2x,punct2y)
+    t.pendown()
+    t.dot()
+    t.write("2")
+    t.penup()
+    t.setpos(punct3x,punct3y)
+    t.pendown()
+    t.dot()
+    t.write("3")
+   
+    t.pensize(0.01)
+
+    k = int()
+    for i in range(1):   
+        Y = random.randrange(-100, 200, 1)
+        for i in range(200,-100,-1):
+            if(Y == i):
+                k = 200 - Y
+                X = random.randrange(int(-k/2),int(k/2))
+                break
+            
+
+        t.penup()
+        t.setpos(X,Y)
+        t.pendown()
+        t.dot()
+
+    n = int(input("numarul de puncte : "))
+    dist = int()
+    list = [-100,0,200]
+    
+    for i in range(n):
+        p = random.choice(list)
+        if(p == -100):
+            x = -200
+            y = p
+        if(p == 0):
+            x = p
+            y = 200
+        if(p == 200):
+            x = p
+            y = -100
+
+        t.penup()
+        t.goto((x+X)/2,(y+Y)/2)
+        t.pendown()
+        t.dot()
+
+        X = (x+X)/2
+        Y = (y+Y)/2
+
+    
+
+     
+
+draw(0, 0)
+
+
+wn.onclick(draw) 
+wn.onkey(wn.bye, "q")
+wn.listen() 
+wn.mainloop()
+
+
+
